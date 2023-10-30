@@ -37,7 +37,7 @@ function bubbleSort(&$array) {
 while (true) {
 
     // Options menu
-    echo "\nEscolha uma opção:\n";
+    echo "\nEscolha uma opção:\n \n";
     echo "1 - Adicionar elementos\n";
     echo "2 - Ordenar elementos (crescente)\n";
     echo "3 - Ordenar elementos (decrescente)\n";
@@ -49,7 +49,7 @@ while (true) {
 
         case 1:
             // Stores the elements
-            $element = intval(readline("\nInforme o elemento: "));
+            $element = intval(readline("Informe o elemento: "));
             if($element >= 0) {
                 $elements[] = $element;
                 echo "Elemento registrado com sucesso!\n";
