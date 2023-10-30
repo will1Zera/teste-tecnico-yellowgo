@@ -13,8 +13,9 @@ function countElements($array){
 
 // Replace the print_r() method
 function showElements($array) {
-    foreach ($array as $index => $element) {
-        echo "[$index] => $element\n";
+    $count = countElements($array);
+    for ($i = 0; $i < $count; $i++) {
+        echo "[$i] => " . $array[$i] . "\n";
     }
 }
 
