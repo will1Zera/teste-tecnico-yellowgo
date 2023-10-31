@@ -1,6 +1,14 @@
 <?php 
     require_once("config/connect.php");
     require_once("config/globals.php");
+    require_once("models/Message.php");
+
+    $message = new Message($BASE_URL);
+    $flassMessage = $message->getMessage();
+
+    if(!empty($flassMessage["msg"])){
+        $message->clearMessage();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -37,3 +45,24 @@
             </div>
         </div>
     </header>
+    <!-- Display system message -->
+    <?php if(!empty($flassMessage["msg"])): ?>
+        <div class="msg-container">
+            <p class="msg <?= $flassMessage["type"] ?>"><?= $flassMessage["msg"] ?><i class="fa-solid fa-x" onclick="fecharMensagem(this)"></i></p>
+        </div>
+        <script>
+            function fecharMensagem(e) {
+                var mensagem = e.closest('.msg-container');
+                mensagem.classList.add('hidden');
+            }
+            setTimeout(function() {
+                var msgContainer = document.querySelector('.msg-container');
+                if (msgContainer) {
+                    msgContainer.style.animation = 'slideOut 0.5s ease forwards';
+                    setTimeout(function() {
+                        msgContainer.style.display = 'none';
+                    }, 500);
+                }
+            }, 4000);
+        </script>
+    <?php endif; ?>
