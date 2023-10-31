@@ -154,4 +154,20 @@
                 return false;
             }
         }
+
+        // Check session token
+        public function verifyToken($protected = false){
+            if(!empty($_SESSION["token"])){
+                $token = $_SESSION["token"];
+                $user = $this->findByToken($token);
+
+                if($user){
+                   return $user; 
+                } else if($protected){ 
+                    $this->message->setMessage("Sem permissão de acesso.", "error", "login");
+                }
+            } else if($protected){ 
+                $this->message->setMessage("Sem permissão de acesso.", "error", "login");
+            }
+        }
     }

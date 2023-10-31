@@ -1,3 +1,13 @@
+<?php 
+    require_once("dao/UserDAO.php");
+    require_once("config/connect.php");
+    require_once("config/globals.php");
+
+    // Restrict access to only user logged
+    $userDao = new UserDAO($conn, $BASE_URL);
+    $userData = $userDao->verifyToken(true);
+?>
+
     <div id="main-container" class="container-fluid">
         <div class="col-md-12">
             <div class="row" id="auth-row">
