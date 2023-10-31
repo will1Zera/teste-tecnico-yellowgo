@@ -1,0 +1,98 @@
+/* REGISTER */
+
+#auth-row{
+    justify-content: space-evenly;
+}
+
+.card-btn{
+    color:var(--white);
+    background-color: var(--yellow);
+    border-radius: var(--button-radius);
+    width: 100%;
+    transition: .5s;
+    margin-top: 30px;
+}
+
+.card-btn:hover{
+    background-color: var(--yellow-dark);
+    color: var(--white);
+}
+
+#register__container h2{
+    text-align: center;
+    color: var(--green-color);
+    margin: 0 auto;
+    font-size: 2.25rem;
+    font-weight: var(--semi-bold-font);
+    margin-top: 8rem;
+}
+
+#auth-row p{
+    text-align: center;
+}
+
+#register__container form{
+    max-width: 400px;
+    margin: 15px auto;
+}
+
+#register__container .card-btn{
+    margin-bottom: 5rem;
+}
+
+.form-group input{
+    border-radius: var(--input-radius);
+    background-color: var(--input-background-color);
+}
+
+.form-group input::placeholder {
+    color: var(--input-placeholder-color);
+}
+
+.form-group input:focus{
+    box-shadow: 0 0 0 0;
+    outline: 0;
+    background-color: var(--input-background-color);
+}
+
+.form-group label{
+    padding: 10px 0px 5px 0px;
+}
+
+/* LOGIN */
+
+.auth__image{
+    width: 250px;
+    margin: 90px 0px 10px 70px;
+}
+
+.fa-lock,
+.fa-id-card{
+    color: var(--input-placeholder-color);
+    position: relative;
+    top: 35px;
+    right: 36px;
+    font-size: 14px;
+}
+
+#form-group input{
+    padding-left: 40px;
+}
+
+.form__link-password,
+.form__link-register{
+    color: var(--yellow);
+    transition: .5s;
+}
+
+.form__link-password:hover,
+.form__link-register:hover{
+    color: var(--yellow-dark);
+}
+
+.form__text{
+    display: block;
+    text-align: center;
+    margin-top: -40px;
+}
+
