@@ -26,6 +26,10 @@
         case '/teste-tecnico-yellowgo/auth-process':
             AuthController::auth();
         break;
+
+        case '/teste-tecnico-yellowgo/logout':
+            AuthController::logout();
+        break;
         
         default:
             TicketController::error();
