@@ -19,6 +19,10 @@
             AuthController::register();
         break;
 
+        case '/teste-tecnico-yellowgo/create-ticket':
+            TicketController::create();
+        break;
+
         default:
             TicketController::error();
     }

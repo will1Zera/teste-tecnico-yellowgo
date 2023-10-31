@@ -12,7 +12,7 @@
   --grey-dark: #333333;
   --grey: #666666;
   --grey-light: #F2F2F2;
-  --blue: #101738;
+  --blue: #1C2064;
 
   --input-placeholder-color: #A1A8B0;
   --input-border-color: #E5E7EB;
@@ -60,6 +60,10 @@ textarea{
 body{
     background-color: var(--white);
     margin-bottom: 80px;
+}
+
+h1, h2{
+    color: var(--blue);
 }
 
 a{

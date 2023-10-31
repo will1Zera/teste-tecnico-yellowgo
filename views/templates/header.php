@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<?= $BASE_URL ?>views/css/index.css"/>
     <link rel="stylesheet" href="<?= $BASE_URL ?>views/css/header.css"/>
     <link rel="stylesheet" href="<?= $BASE_URL ?>views/css/auth.css"/>
+    <link rel="stylesheet" href="<?= $BASE_URL ?>views/css/ticket.css"/>
     <title>Osirnet - Suporte</title>
 </head>
 <body>

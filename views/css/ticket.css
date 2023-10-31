@@ -1,0 +1,30 @@
+.dashboard__title{
+    margin-top: 90px;
+    margin-bottom: 20px;
+}
+
+.dashboard__link{
+    color: var(--yellow);
+    transition: .5s;
+}
+
+.dashboard__link:hover{
+    color: var(--yellow-dark);
+}
+
+.dashboard__button{
+    color: var(--white);
+    background-color: var(--yellow);
+    border-radius: var(--button-radius);
+    padding: 10px;
+    transition: .5s;
+}
+
+.dashboard__button:hover{
+    background-color: var(--yellow-dark);
+}
+
+.table tr td,
+.table tr th {
+    padding: 20px;
+}
