@@ -2,6 +2,7 @@
     require_once("config/connect.php");
     require_once("config/globals.php");
     require_once("models/Message.php");
+    require_once("dao/UserDAO.php");
 
     $message = new Message($BASE_URL);
     $flassMessage = $message->getMessage();
@@ -9,6 +10,9 @@
     if(!empty($flassMessage["msg"])){
         $message->clearMessage();
     }
+
+    $userDao = new UserDao($conn, $BASE_URL);
+    $userData = $userDao->verifyToken(false);
 ?>
 
 <!DOCTYPE html>
@@ -36,10 +40,15 @@
             <div class="header__container-nav">
                 <nav id="nav">
                     <ul class="header__ul" id="nav__li">
-                        <li><a class="header__li" href="login">Entrar</a></li>
-                        <li><a class="header__li" href="register">Cadastrar</a></li>
-                        <li><a class="header__li" href="create-ticket">Criar ticket</a></li>
-                        <li><a class="header__li" href="logout">Sair</a></li>
+                        <!-- Changes depending on the user -->
+                        <?php if($userData): ?>
+                            <li><a class="header__li" href="<?= $BASE_URL ?>">Solicitações</a></li>
+                            <li><a class="header__li" href="create-ticket">Criar solicitação</a></li>
+                            <li><a class="header__li" href="logout">Sair</a></li>
+                        <?php else: ?>
+                            <li><a class="header__li" href="login">Entrar</a></li>
+                            <li><a class="header__li" href="register">Cadastrar</a></li>
+                        <?php endif; ?>
                     </ul>
                 </nav>
             </div>

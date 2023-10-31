@@ -15,7 +15,7 @@
                     <h2 class="mb-3">Solicite o suporte da Osir</h2>
                     <p>Nos informe o seu problema ou dúvida e em breve <br />  um suporte da Osirnet irá te atender.</p>
                     <form action="ticket-process" method="POST">
-                        <input type="hidden" name="type" value="register">
+                        <input type="hidden" name="type-form" value="create">
                         <div class="form-group">
                             <label for="title">Título</label>
                             <input type="text" maxlength="200" class="form-control" id="title" placeholder="Digite o título da solicitação" name="title">

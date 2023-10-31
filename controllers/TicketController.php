@@ -17,4 +17,8 @@
                include 'views/ticket/create.php';
                include 'views/templates/footer.php';
           }
+
+          public static function ticketProcess(){
+               include 'views/ticket/ticket-process.php';
+          }
      }
