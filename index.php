@@ -1,6 +1,7 @@
 <?php
     include 'controllers/TicketController.php';
     include 'controllers/AuthController.php';
+    include 'controllers/DomainController.php';
 
     // Get whatever is typed in the url
     $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -37,6 +38,18 @@
 
         case '/teste-tecnico-yellowgo/logout':
             AuthController::logout();
+        break;
+
+        case '/teste-tecnico-yellowgo/domain':
+            DomainController::dashboard();
+        break;
+
+        case '/teste-tecnico-yellowgo/create-domain':
+            DomainController::create();
+        break;
+
+        case '/teste-tecnico-yellowgo/domain-process':
+            DomainController::domainProcess();
         break;
         
         default:

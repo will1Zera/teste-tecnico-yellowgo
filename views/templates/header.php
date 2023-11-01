@@ -13,7 +13,9 @@
 
     $userDao = new UserDao($conn, $BASE_URL);
     $userData = $userDao->verifyToken(false);
-    $userType = $userData->id_user_type;
+    if($userData){
+        $userType = $userData->id_user_type;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +48,11 @@
                             <li><a class="header__li" href="<?= $BASE_URL ?>">Solicitações</a></li>
                             <?php if($userType === 3): ?>
                                 <li><a class="header__li" href="create-ticket">Criar solicitação</a></li>
+                            <?php endif; ?>
+                            <?php if($userType === 1): ?>
+                                <li><a class="header__li" href="user">Usuários</a></li>
+                                <li><a class="header__li" href="domain">Domínios</a></li>
+                                <li><a class="header__li" href="create-domain">Criar domínio</a></li>
                             <?php endif; ?>
                             <li><a class="header__li" href="logout">Sair</a></li>
                         <?php else: ?>
