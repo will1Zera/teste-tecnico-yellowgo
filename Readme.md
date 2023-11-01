@@ -46,6 +46,9 @@ Agora, com o projeto rodando, acesse este link no seu navegador:
 
 - [Link do projeto.](http://127.0.0.1:8000/)
 
+## O que foi feito
+Tive tempo apenas de iniciar um projeto em Laravel e migrar as principais views e templates do projeto em PHP. Criando algumas rotas, controllers e views com o blade.
+
 ## Branchs
 - Desafio de Algoritmos e Lógica: <a href="https://github.com/will1Zera/teste-tecnico-yellowgo/tree/algorithms-and-logic">algorithms-and-logic.</a>
 - Desafio do Sistema de Abertura de Protocolos em PHP: <a href="https://github.com/will1Zera/teste-tecnico-yellowgo/tree/php-protocol-opening-system">php protocol opening system.</a>

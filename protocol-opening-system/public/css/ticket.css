@@ -1,0 +1,59 @@
+.dashboard__title{
+    margin-top: 120px;
+    margin-bottom: 20px;
+}
+
+.dashboard__link{
+    color: var(--yellow);
+    transition: .5s;
+}
+
+.dashboard__link:hover{
+    color: var(--yellow-dark);
+}
+
+.dashboard__button{
+    color: var(--white);
+    background-color: var(--yellow);
+    border-radius: var(--button-radius);
+    padding: 10px;
+    transition: .5s;
+    border: none;
+}
+
+.dashboard__button:hover{
+    background-color: var(--yellow-dark);
+}
+
+.table tr td,
+.table tr th {
+    padding: 20px;
+}
+
+.ticket__container{
+    margin-top: 120px;
+}
+
+.ticket__container h3 span{
+    color: var(--yellow);
+}
+
+.ticket__container p span{
+    color: var(--green);
+}
+
+.ticket__container .ticket__status{
+    margin-bottom: 30px;
+}
+
+.ticket__container h3{
+    margin-bottom: 20px;
+}
+
+.ticket__update h3{
+    margin-top: 50px;
+}
+
+.ticket__update button{
+    margin-top: 30px;
+}
