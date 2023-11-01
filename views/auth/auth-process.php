@@ -23,26 +23,32 @@
         if($name && $email && $password){
 
             if($password === $confirmpassword){
+                $user = new User();
                 
-                if($userDao->findByEmail($email) === false){
-                    // Register a user
-                    $user = new User();
+                $id_user_type = $user->checkEmail($email);
 
-                    $userToken = $user->generateToken();
-                    $finalPassword = $user->generatePassword($password);
+                if($id_user_type !== null){
 
-                    $user->id_user_type = 3;
-                    $user->name = $name;
-                    $user->email = $email;
-                    $user->password = $finalPassword;
-                    $user->token = $userToken;
-                    $user->status = 1;
-
-                    $userDao->create($user);
-
-                    $message->setMessage("Cadastro realizado com sucesso.", "success", "login");
-                } else{ 
-                    $message->setMessage("E-mail já cadastrado, tente novamente.", "error", "back");
+                    if($userDao->findByEmail($email) === false){
+                        // Register a user
+                        $userToken = $user->generateToken();
+                        $finalPassword = $user->generatePassword($password);
+    
+                        $user->id_user_type = $id_user_type;
+                        $user->name = $name;
+                        $user->email = $email;
+                        $user->password = $finalPassword;
+                        $user->token = $userToken;
+                        $user->status = 1;
+    
+                        $userDao->create($user);
+    
+                        $message->setMessage("Cadastro realizado com sucesso.", "success", "login");
+                    } else{ 
+                        $message->setMessage("E-mail já cadastrado, tente novamente.", "error", "back");
+                    }
+                } else{
+                    $message->setMessage("Domínio de e-mail não permitido.", "error", "back");
                 }
             } else{ 
                 $message->setMessage("As senhas devem ser iguais.", "error", "back");   

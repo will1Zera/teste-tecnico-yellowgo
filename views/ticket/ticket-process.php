@@ -44,7 +44,6 @@
         }
 
     } elseif($type === "delete"){
-
         // Get the ticket id
         $id = filter_input(INPUT_POST, "id");
         $ticket = $ticketDao->findById($id);
@@ -61,6 +60,25 @@
             $message->setMessage("Ocorreu um erro no sistema.", "error", "login");
         }
 
+    } elseif($type === "update"){
+        // Get the ticket id
+        $id = filter_input(INPUT_POST, "id");
+        $ticket = $ticketDao->findById($id);
+
+        // Retrieve input data
+        $responsable_name = filter_input(INPUT_POST, "responsable_name");
+        $closure_reason = filter_input(INPUT_POST, "closure_reason");
+
+        // Validations
+        if($responsable_name && $closure_reason){
+            // Update a ticket
+            $ticket->responsable_name = $responsable_name;
+            $ticket->closure_reason = $closure_reason;
+
+            $ticketDao->update($ticket);
+        } else{
+            $message->setMessage("Preencha todos os campos.", "error", "back");
+        }
     } else{
         $message->setMessage("Ocorreu um erro no sistema.", "error", "login");
     }

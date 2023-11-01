@@ -13,6 +13,7 @@
 
     $userDao = new UserDao($conn, $BASE_URL);
     $userData = $userDao->verifyToken(false);
+    $userType = $userData->id_user_type;
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +44,9 @@
                         <!-- Changes depending on the user -->
                         <?php if($userData): ?>
                             <li><a class="header__li" href="<?= $BASE_URL ?>">Solicitações</a></li>
-                            <li><a class="header__li" href="create-ticket">Criar solicitação</a></li>
+                            <?php if($userType === 3): ?>
+                                <li><a class="header__li" href="create-ticket">Criar solicitação</a></li>
+                            <?php endif; ?>
                             <li><a class="header__li" href="logout">Sair</a></li>
                         <?php else: ?>
                             <li><a class="header__li" href="login">Entrar</a></li>

@@ -18,4 +18,19 @@
         public function generatePassword($password){
             return password_hash($password, PASSWORD_DEFAULT);
         }
+
+        // Function that checks email
+        public function checkEmail($email) {
+            $domain = substr(strrchr($email, "@"), 1);
+            switch ($domain) {
+                case 'osirnet.cliente.com.br':
+                    return 3;
+                case 'osirnet.suporte.com.br':
+                    return 2;
+                case 'osirnet.com.br':
+                    return 1;
+                default:
+                    return null;
+            }
+        }
     }

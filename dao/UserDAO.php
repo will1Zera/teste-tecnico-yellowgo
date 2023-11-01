@@ -41,8 +41,6 @@
             $stmt->bindParam(":token", $user->token);
             $stmt->bindParam(":status", $user->status);
             $stmt->execute();
-
-            $this->message->setMessage("Solicitação criada com sucesso.", "success", "./");
         }
 
         // Update a user

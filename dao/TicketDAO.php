@@ -47,6 +47,22 @@
             $stmt->execute();
         }
 
+        // Update a ticket
+        public function update(Ticket $ticket){
+            $stmt = $this->conn->prepare("UPDATE tickets SET
+                responsable_name = :responsable_name, 
+                closure_reason = :closure_reason
+                WHERE id = :id
+                ");
+
+            $stmt->bindParam(":responsable_name", $ticket->responsable_name);
+            $stmt->bindParam(":closure_reason", $ticket->closure_reason);
+            $stmt->bindParam(":id", $ticket->id);
+            $stmt->execute();
+
+            $this->message->setMessage("Solicitação atualizada com sucesso.", "success", "back");
+        }
+
         // Redeem user tickets
         public function getTicketsByUserId($id){
             $tickets = [];
@@ -89,5 +105,21 @@
             $stmt->execute();
 
             $this->message->setMessage("Solicitação cancelada com sucesso.", "success", "./");
+        }
+
+        // Function that get all tickets
+        public function getAllTickets(){
+            $tickets = [];
+            $stmt = $this->conn->query("SELECT * FROM tickets ORDER BY id DESC");
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+                $ticketsArray = $stmt->fetchAll();
+
+                foreach($ticketsArray as $ticket){
+                    $tickets[] = $this->buildTicket($ticket);
+                }
+            }
+            return $tickets;
         }
     }

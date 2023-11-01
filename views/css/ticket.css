@@ -49,3 +49,11 @@
 .ticket__container h3{
     margin-bottom: 20px;
 }
+
+.ticket__update h3{
+    margin-top: 50px;
+}
+
+.ticket__update button{
+    margin-top: 30px;
+}
