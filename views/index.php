@@ -30,11 +30,11 @@
                     <tbody>
                         <?php foreach ($userTickets as $ticket): ?>
                             <tr>
-                                <td><a href="#" class="dashboard__link"><?= $ticket->protocol ?></a></td>
+                                <td><a href="ticket?id=<?= $ticket->id ?>" class="dashboard__link"><?= $ticket->protocol ?></a></td>
                                 <td scope="row"><?= $ticket->title ?></td>
                                 <td><?= $ticket->type ?></td>
                                 <td>
-                                    <a href="#" class="dashboard__button">Acompanhar</a>
+                                    <a href="ticket?id=<?= $ticket->id ?>" class="dashboard__button">Acompanhar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

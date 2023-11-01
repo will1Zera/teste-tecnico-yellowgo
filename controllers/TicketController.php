@@ -21,4 +21,10 @@
           public static function ticketProcess(){
                include 'views/ticket/ticket-process.php';
           }
+
+          public static function ticket(){
+               include 'views/templates/header.php';
+               include 'views/ticket/ticket.php';
+               include 'views/templates/footer.php';
+          }
      }

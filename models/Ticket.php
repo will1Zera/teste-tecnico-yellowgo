@@ -7,8 +7,10 @@
         public $protocol;
         public $type;
         public $description;
-        public $responsable_id;
+        public $responsable_name;
         public $closure_reason;
+        public $created_at;
+        public $update_at;
 
         // Function that generates protocol number
         public function generateProtocol(){
@@ -21,5 +23,9 @@
         
             return $protocolNumber;
         }
-        
+
+        // Function to format date
+        function formatDate($date, $format = 'd/m/Y') {
+            return date($format, strtotime($date));
+        }
     }

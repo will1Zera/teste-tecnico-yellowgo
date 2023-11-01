@@ -27,6 +27,10 @@
             TicketController::ticketProcess();
         break;
 
+        case '/teste-tecnico-yellowgo/ticket':
+            TicketController::ticket();
+        break;
+
         case '/teste-tecnico-yellowgo/auth-process':
             AuthController::auth();
         break;

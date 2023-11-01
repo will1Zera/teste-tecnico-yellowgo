@@ -22,8 +22,10 @@
             $ticket->protocol = $data['protocol'];
             $ticket->type = $data['type'];
             $ticket->description = $data['description'];
-            $ticket->responsable_id = $data['responsable_id'];
+            $ticket->responsable_name = $data['responsable_name'];
             $ticket->closure_reason = $data['closure_reason'];
+            $ticket->created_at = $data['created_at'];
+            $ticket->update_at = $data['update_at'];
 
             return $ticket;
         }
@@ -31,16 +33,16 @@
         // Create a ticket
         public function create(Ticket $ticket){
             $stmt = $this->conn->prepare("INSERT INTO tickets(
-                users_id, title, protocol, type, description, responsable_id, closure_reason
+                users_id, title, protocol, type, description, responsable_name, closure_reason
                 ) VALUES (
-                :users_id, :title, :protocol, :type, :description, :responsable_id, :closure_reason)");
+                :users_id, :title, :protocol, :type, :description, :responsable_name, :closure_reason)");
 
             $stmt->bindParam(":users_id", $ticket->users_id);
             $stmt->bindParam(":title", $ticket->title);
             $stmt->bindParam(":protocol", $ticket->protocol);
             $stmt->bindParam(":type", $ticket->type);
             $stmt->bindParam(":description", $ticket->description);
-            $stmt->bindParam(":responsable_id", $ticket->responsable_id);
+            $stmt->bindParam(":responsable_name", $ticket->responsable_name);
             $stmt->bindParam(":closure_reason", $ticket->closure_reason);
             $stmt->execute();
         }
@@ -60,5 +62,23 @@
                 }
             }
             return $tickets;
+        }
+
+        // Search for the ticket id
+        public function findById($id){
+            $ticket = [];
+            $stmt = $this->conn->prepare("SELECT * FROM tickets WHERE id = :id");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+                $ticketData = $stmt->fetch();
+
+                $ticket = $this->buildTicket($ticketData);
+
+                return $ticket;
+            } else{
+                return false;
+            }
         }
     }
