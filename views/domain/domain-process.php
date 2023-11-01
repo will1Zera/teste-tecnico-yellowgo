@@ -40,7 +40,22 @@
         }
 
     } elseif($type === "delete"){
+        // Get the domain id
+        $id = filter_input(INPUT_POST, "id");
+        $domain = $domainDao->findById($id);
 
+        if($domain){
+
+            if($domain->users_id === $userData->id){
+                
+                $domainDao->destroy($domain->id);
+            } else{
+                $message->setMessage("Ocorreu um erro no sistema.", "error", "login");
+            }
+        } else{
+            $message->setMessage("Ocorreu um erro no sistema.", "error", "login");
+        }
+        
     } elseif($type === "update"){
         
     } else{

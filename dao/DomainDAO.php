@@ -57,4 +57,49 @@
             }
             return $domains;
         }
+
+        // Search for the domain id
+        public function findById($id){
+            $domain = [];
+            $stmt = $this->conn->prepare("SELECT * FROM domains WHERE id = :id");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+                $domainData = $stmt->fetch();
+
+                $domain = $this->buildDomain($domainData);
+
+                return $domain;
+            } else{
+                return false;
+            }
+        }
+
+        // Search for the domain_type
+        public function findByDomainType($domain_type){
+            $domain = [];
+            $stmt = $this->conn->prepare("SELECT * FROM domains WHERE domain_type = :domain_type");
+            $stmt->bindParam(":domain_type", $domain_type);
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+                $domainData = $stmt->fetch();
+
+                $domain = $this->buildDomain($domainData);
+
+                return $domain;
+            } else{
+                return false;
+            }
+        }
+
+        // Delete a domain
+        public function destroy($id){
+            $stmt = $this->conn->prepare("DELETE FROM domains WHERE id = :id");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+
+            $this->message->setMessage("Domínio excluído com sucesso.", "success", "domain");
+        }
     }

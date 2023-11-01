@@ -34,8 +34,12 @@
                                 <td scope="row"><?= $domain->name ?></a></td>
                                 <td scope="row"><?= $domain->domain_type ?></td>
                                 <td scope="row"><?= $domain->user_type ?></td>
-                                <td>
-                                    <a href="#" class="dashboard__button">Editar</a>
+                                <td scope="row">
+                                    <form action="domain-process" method="POST">
+                                        <input type="hidden" name="type-form" value="delete"> 
+                                        <input type="hidden" name="id" value="<?= $domain->id ?>"> 
+                                        <button type="submit" class="dashboard__button">Deletar</button>
+                                    </form>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

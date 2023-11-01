@@ -19,7 +19,7 @@
             return password_hash($password, PASSWORD_DEFAULT);
         }
 
-        // Function that checks email
+        /* Function that checks email
         public function checkEmail($email) {
             $domain = substr(strrchr($email, "@"), 1);
             switch ($domain) {
@@ -32,5 +32,12 @@
                 default:
                     return null;
             }
+        }
+        */
+
+        // Function that generates domain email
+        public function domainEmail($email) {
+            $domain = substr(strrchr($email, "@"), 1);
+            return $domain;
         }
     }

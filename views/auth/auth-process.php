@@ -2,10 +2,13 @@
     require_once("config/connect.php");
     require_once("config/globals.php"); 
     require_once("models/User.php");
+    require_once("models/Domain.php");
     require_once("models/Message.php");
     require_once("dao/UserDAO.php");
+    require_once("dao/DomainDAO.php");
 
     $userDao = new UserDAO($conn, $BASE_URL);
+    $domainDao = new DomainDAO($conn, $BASE_URL);
     $message = new Message($BASE_URL);
 
     // Retrieve the form type
@@ -24,17 +27,17 @@
 
             if($password === $confirmpassword){
                 $user = new User();
-                
-                $id_user_type = $user->checkEmail($email);
+                $domainEmail = $user->domainEmail($email);
+                $domain = $domainDao->findByDomainType($domainEmail);
 
-                if($id_user_type !== null){
+                if($domain->user_type){
 
                     if($userDao->findByEmail($email) === false){
                         // Register a user
                         $userToken = $user->generateToken();
                         $finalPassword = $user->generatePassword($password);
     
-                        $user->id_user_type = $id_user_type;
+                        $user->id_user_type = $domain->user_type;
                         $user->name = $name;
                         $user->email = $email;
                         $user->password = $finalPassword;
@@ -50,6 +53,7 @@
                 } else{
                     $message->setMessage("Domínio de e-mail não permitido.", "error", "back");
                 }
+                
             } else{ 
                 $message->setMessage("As senhas devem ser iguais.", "error", "back");   
             }
