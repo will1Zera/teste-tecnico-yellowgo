@@ -34,7 +34,11 @@
                     <p class="ticket__status">Status: <span>Solicitado.</span></p>
 
                 <?php endif; ?>
-                <a href="ticket?id=<?= $ticket->id ?>" class="dashboard__button">Cancelar solicitação</a>
+                <form action="ticket-process" method="POST">
+                    <input type="hidden" name="type-form" value="delete"> 
+                    <input type="hidden" name="id" value="<?= $ticket->id ?>"> 
+                    <button type="submit" class="dashboard__button">Cancelar solicitação</button>
+                </form>
             </div>
         </div>
     </div>

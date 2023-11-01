@@ -42,6 +42,25 @@
         } else{
             $message->setMessage("Preencha todos os campos.", "error", "back");
         }
+
+    } elseif($type === "delete"){
+
+        // Get the ticket id
+        $id = filter_input(INPUT_POST, "id");
+        $ticket = $ticketDao->findById($id);
+
+        if($ticket){
+
+            if($ticket->users_id === $userData->id){
+                
+                $ticketDao->destroy($ticket->id);
+            } else{
+                $message->setMessage("Ocorreu um erro no sistema.", "error", "login");
+            }
+        } else{
+            $message->setMessage("Ocorreu um erro no sistema.", "error", "login");
+        }
+
     } else{
         $message->setMessage("Ocorreu um erro no sistema.", "error", "login");
     }

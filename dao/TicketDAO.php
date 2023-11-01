@@ -81,4 +81,13 @@
                 return false;
             }
         }
+
+        // Delete a ticket
+        public function destroy($id){
+            $stmt = $this->conn->prepare("DELETE FROM tickets WHERE id = :id");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+
+            $this->message->setMessage("Solicitação cancelada com sucesso.", "success", "./");
+        }
     }
